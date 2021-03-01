@@ -1,0 +1,132 @@
+﻿@model HERASOFTCRM.Models.Siniflar.Musteri
+@{
+    ViewBag.Title = "MusteriEkle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<title>Müşteri Ekle</title>
+<html lang="tr">
+<section id="basic-input">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Müşteri Ekle</h4>
+                </div>
+                <div class="card-content">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form class="form-group" method="post">
+                                    <div>
+                                        <fieldset class="form-group">
+                                            <label for="basicInput">Ünvanı</label>
+                                            @Html.TextBoxFor(x => x.musteriUnvan, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+
+
+                                        </fieldset>
+                                    </div>
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">Vergi No</label>
+                                        @Html.TextBoxFor(x => x.musteriVergino, new { @maxlength = "11", @class = "form-control", onkeypress = "return event.keyCode >= 48 && event.keyCode <= 57" })
+
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">E-Posta</label>
+                                        @Html.TextBoxFor(x => x.musteriMail, new { @class = "form-control", @onkeyup = "InputToLower(this);" })
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">İl</label>
+                                        @Html.TextBoxFor(x => x.musteriIl, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+                                    </fieldset>
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">Adres</label>
+                                        @Html.TextBoxFor(x => x.musteriAdres, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">Müşteri Tipi</label>
+                                        <input type="text" class="form-control" id="basicInput" placeholder="">
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">İlgili Kişi</label>
+                                        @Html.TextBoxFor(x => x.musteriIlgili, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+                                    </fieldset>
+
+                                    <fieldset class="form-group">
+                                        <label for="basicInput">Sözleşme Tutar</label>
+                                        @Html.TextBoxFor(x => x.musteriSozlesmeTutar, new { @class = "form-control", onkeypress = "return event.keyCode >= 48 && event.keyCode <= 57" })
+                                    </fieldset>
+
+</div>
+                            <div class="col-md-6">
+
+                                <fieldset class="form-group">
+                                    <label for="basicInput">Telefon</label>
+                                    @Html.TextBoxFor(x => x.musteriTelefon, new { @maxlength = "11", @class = "form-control", onkeypress = "return event.keyCode >= 48 && event.keyCode <= 57" })
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="basicInput">Vergi Dairesi</label>
+                                    @Html.TextBoxFor(x => x.musteriVergiDairesi, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="basicInput">Web Adresi</label>
+                                    @Html.TextBoxFor(x => x.webAdres, new { @class = "form-control", @onkeyup = "InputToLower(this);" })
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="basicInput">İlçe</label>
+                                    @Html.TextBoxFor(x => x.musteriIlce, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="basicInput">Not</label>
+                                    @Html.TextBoxFor(x => x.musteriNot, new { @class = "form-control", @onkeyup = "InputToUpper(this);" })
+                                </fieldset>
+
+                                <fieldset class="form-group">
+                                    <label for="basicInput">Ülke</label>
+                                    <input type="text" class="form-control" id="basicInput" placeholder="">
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="basicInput">İlgili Kişi Telefon</label>
+                                    @Html.TextBoxFor(x => x.musteriIlgilino, new { @maxlength = "11", @class = "form-control", onkeypress = "return event.keyCode >= 48 && event.keyCode <= 57" })
+                                </fieldset>
+                                <fieldset class="form-group">
+                                    <label for="basicInput">Müşteri Tipi</label>
+                                    @Html.DropDownListFor(x => x.KategoriID, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+                                </fieldset>
+                                <button class="btn btn-success glow mr-1 mb-1">Kayıt Et</button>
+                                <button class="btn btn-danger glow mr-1 mb-1">Temizle</button>
+                                </form>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<script>
+    function InputToUpper(obj) {
+        if (obj.value != "") {
+            obj.value = obj.value.toUpperCase();
+        }
+    }
+    function InputToLower(obj2) {
+        if (obj2.value != "") {
+            obj2.value = obj2.value.toLowerCase();
+        }
+    }
+</script>
+<script type="text/javascript">
+    // <![CDATA[
+    jQuery(function ($) {
+        $.mask.definitions['~'] = '[+-]';
+        $('#phone').mask('(999) 999-9999');
+        $('#phone2').mask('0999 999 9999');
+    });
+// ]]&gt;</script> 
+
+</html>

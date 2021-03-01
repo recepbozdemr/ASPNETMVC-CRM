@@ -1,0 +1,71 @@
+﻿
+@using HERASOFTCRM.Models.Siniflar
+@model List<Musteri>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section id="column-selectors">
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Müşteri Listesi</h4>
+                </div>
+
+                <div class="card-content">
+
+                    <div class="card-body card-dashboard">
+                       <a href="/Musteri/MusteriEkle" class="btn btn-success glow mr-1 mb-1" >Yeni Müşteri</a>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-striped dataex-html5-selectors">
+                                <thead>
+                                    <tr>
+                                        <th>Firma Adı</th>
+                                        <th>Adres</th>
+                                        <th>Mail Adresi</th>
+                                        <th>Müşteri Tipi</th>
+                                        <th>Detay</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.musteriUnvan</td>
+                                            <td>@item.musteriAdres</td>
+                                            <td>@item.musteriMail</td>
+                                            <td>@item.Kategoris.KategoriAd</td>
+                                            <td><button type="button" class="btn btn-warning shadow mr-1 mb-1">Detay</button></td>
+                                            <td><a href="/Musteri/MusteriSil/@item.musteriID" class="btn btn-danger mr-1 mb-1">Sil</a></td>
+                                            <td><a href="/Musteri/MusteriGetir/@item.musteriID" class="btn btn-success glow mr-1 mb-1">Güncelle</a></td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Firma Adı</th>
+                                        <th>Adres</th>
+                                        <th>Mail Adresi</th>
+                                        <th>Müşteri Tipi</th>
+                                        <th>Detay</th>
+                                        <th>Sil</th>
+                                        <th>Güncelle</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
